@@ -18,8 +18,13 @@ public class Variable extends Value
         this.name = name;
     }
     
-    public Value eval(Environment env)
+    public int getValue()
     {
         throw new RuntimeException();
+    }
+    
+    public Value eval(Environment env)
+    {
+        return env.takeVariable(name);
     }
 }

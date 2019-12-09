@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  *  
  * 
@@ -20,5 +20,10 @@ public class AddExpr
         this.exp1 = exp1;
         this.exp2 = exp2;
         this.op = op;
+    }
+    
+    public Value eval(Environment env)
+    {
+        throw new RuntimeException();
     }
 }

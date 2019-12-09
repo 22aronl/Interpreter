@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  *  
  * 
@@ -18,5 +18,10 @@ public class Assingment extends Statement
     {
         name = n;
         expression = e;
+    }
+    
+    public void run(Environment env)
+    {
+        env.assignVariable(name, expression.eval(env));
     }
 }

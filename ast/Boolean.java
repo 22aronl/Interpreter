@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  * 
  * 
@@ -16,5 +16,15 @@ public class Boolean extends Value
     public Boolean(boolean value)
     {
         val = value;
+    }
+    
+    public int getValue()
+    {
+        return val ? 1:0;
+    }
+    
+    public Value eval(Environment env)
+    {
+        return this;
     }
 }

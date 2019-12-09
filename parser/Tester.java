@@ -19,7 +19,8 @@ public class Tester
             String name = files[i].getName();
             if(name.length() < 6 && !name.substring(0, 2).equals("wq"))
                 continue;
-            System.out.println("Running test number " + counter + ":");
+            System.out.println("Running test number " + counter + ": "+ name.substring(0, name.indexOf(".") == -1 ? 
+                        name.length() : name.indexOf(".")));
             Parser p = new Parser(new Scanner(name));
             p.parseProgram();
             counter++;

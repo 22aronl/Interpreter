@@ -10,4 +10,6 @@ import environment.*;
 public abstract class Value
 {
     public abstract Value eval(Environment env);
+    
+    public abstract int getValue();
 }

@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  *  
  * 
@@ -9,11 +9,5 @@ package ast;
  */
 public abstract class Statement
 {
-    /**
-     * Constructor for objects of class Statement
-     */
-    public Statement()
-    {
-
-    }
+    public abstract void run(Environment env);
 }

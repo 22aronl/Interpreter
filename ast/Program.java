@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  *  
  * 
@@ -18,5 +18,11 @@ public class Program
     {
         statement = s;
         program  = p;
+    }
+    
+    public void run(Environment env)
+    {
+        statement.run(env);
+        program.run(env);
     }
 }

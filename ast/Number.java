@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  * 
  * 
@@ -16,5 +16,15 @@ public class Number extends Value
     public Number(int num)
     {
         this.num = num;
+    }
+    
+    public int getValue()
+    {
+        return num;
+    }
+    
+    public Value eval(Environment env)
+    {
+        return this;
     }
 }
