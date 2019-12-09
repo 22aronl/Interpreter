@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  *  
  * 
@@ -20,5 +20,9 @@ public class While extends Statement
         program = p;
     }
     
-    
+    public void run(Environment env)
+    {
+        while(expression.eval(env).getBooleanValue())
+            program.run(env);
+    }
 }

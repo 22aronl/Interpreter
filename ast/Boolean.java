@@ -16,6 +16,17 @@ public class Boolean extends Value
     public Boolean(boolean value)
     {
         val = value;
+        
+    }
+    
+    public String toString()
+    {
+        return val + "" ;
+    }
+    
+    public boolean getBooleanValue()
+    {
+        return val;
     }
     
     public int getValue()

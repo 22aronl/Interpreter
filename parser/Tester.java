@@ -1,6 +1,7 @@
 package parser;
 
 import scanner.*;
+import environment.*;
 import java.io.*;
 /**
  * The Tester class
@@ -14,15 +15,19 @@ public class Tester
     {
         File[] files = (new File("testFile")).listFiles();
         int counter = 1;
+        String specific = "simpleTest2.txt";
         for(int i = 0; i < files.length; i++)
         {
             String name = files[i].getName();
-            if(name.length() < 6 && !name.substring(0, 2).equals("wq"))
+            if(name.length() < 2 && !name.substring(0, 2).equals("wq"))
+                continue;
+            if(!specific.equals("NO") && !name.equals(specific))
                 continue;
             System.out.println("Running test number " + counter + ": "+ name.substring(0, name.indexOf(".") == -1 ? 
                         name.length() : name.indexOf(".")));
-            Parser p = new Parser(new Scanner(name));
-            p.parseProgram();
+            Parser p = new Parser(new Scanner(new FileInputStream("testFile/" + name)));
+            Environment env = new Environment();
+            p.parseProgram().run(env);
             counter++;
             System.out.println("---------------------");
             System.out.println("");

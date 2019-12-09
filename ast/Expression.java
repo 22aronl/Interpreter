@@ -27,6 +27,12 @@ public class Expression extends Value
         throw new RuntimeException();
     }
     
+    public boolean getBooleanValue()
+    {
+        throw new RuntimeException();
+    }
+    
+    
     public Value eval(Environment env)
     {
         Value k = exp1.eval(env);

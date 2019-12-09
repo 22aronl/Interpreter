@@ -1,6 +1,7 @@
 package ast;
 
-
+import java.util.*;
+import environment.*;
 /**
  *  
  * 
@@ -17,4 +18,18 @@ public class Read
     {
         variable = b;
     }
+    
+    public void run(Environment env)
+    {
+        Scanner sc = new Scanner(System.in);
+        String k = sc.next();
+        Value v = null;
+        if(k.equals("true") || k.equals("false"))
+            v = new Boolean(k.equals("true"));
+        else
+            v = new Number(Integer.parseInt(k));
+            
+        env.assignVariable(variable, v);
+    }
 }
+

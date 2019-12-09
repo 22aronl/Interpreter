@@ -24,6 +24,13 @@ public class AddExpr
     
     public Value eval(Environment env)
     {
-        throw new RuntimeException();
+        int a = exp1.eval(env).getValue();
+        if(exp2 == null)
+            return new Number(a);
+        int b = exp2.eval(env).getValue();
+        if(op.equals("+"))
+            return new Number(a + b);
+        else
+            return new Number(a - b);
     }
 }

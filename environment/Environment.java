@@ -16,7 +16,7 @@ public class Environment
      */
     public Environment()
     {
-
+        map = new HashMap<String, Value>();
     }
     
     /**

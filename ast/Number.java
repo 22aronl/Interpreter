@@ -18,6 +18,16 @@ public class Number extends Value
         this.num = num;
     }
     
+    public String toString()
+    {
+        return num + "";
+    }
+    
+    public boolean getBooleanValue()
+    {
+        return num != 0;
+    }
+    
     public int getValue()
     {
         return num;

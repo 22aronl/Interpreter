@@ -12,4 +12,11 @@ public abstract class Value
     public abstract Value eval(Environment env);
     
     public abstract int getValue();
+    
+    public abstract boolean getBooleanValue();
+    
+    public String toString()
+    {
+        throw new RuntimeException();
+    }
 }

@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  *  
  * 
@@ -18,5 +18,12 @@ public class Display extends Statement
     {
         display = d;
         read = r;
+    }
+
+    public void run(Environment env)
+    {
+        System.out.println(display.eval(env));
+        if(read != null)
+            read.run(env);
     }
 }

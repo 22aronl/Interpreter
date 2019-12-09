@@ -52,7 +52,7 @@ public class Parser
             e.printStackTrace();
         }
     }
-    
+
     /**
      * This parses the current Number
      * @return the number of current Token
@@ -63,7 +63,7 @@ public class Parser
         eat(currentToken);
         return new ast.Number(k);
     }
-    
+
     /**
      * This parses the Variable
      * @return the variable in the currentToken
@@ -74,7 +74,7 @@ public class Parser
         eat(currentToken);
         return new Variable(k);
     }
-    
+
     /**
      * Checks if the number is a number
      * @param num the given number in a string
@@ -92,7 +92,7 @@ public class Parser
         }
         return true;
     }
-    
+
     /**
      * Parses the Value in the currentToken
      * @return the value from this currneToken
@@ -113,7 +113,7 @@ public class Parser
         else
             return parseVariable();
     }
-    
+
     /**
      * This parses the negativeexpr in the grammar
      * @return a neg expr class 
@@ -122,10 +122,14 @@ public class Parser
     {
         String op = "+";
         if(currentToken.equals("-"))
+        {
             op = "-";
+            eat("-");
+        }
+       
         return new NegExpr(parseValue(), op);
     }
-    
+
     /**
      * This parses the multExpress in the grammar
      * @return the mulExpr class
@@ -143,7 +147,7 @@ public class Parser
         }
         return new MultExpr(neg, exp1, op);
     }
-    
+
     /**
      * This parses the ADdExpression in the grammar
      * @return the AddEXpr in ast
@@ -161,7 +165,7 @@ public class Parser
         }
         return new AddExpr(mult, exp1, op);
     }
-    
+
     /**
      * Checks if this is a relop (<, >, >=, <=, <>, =)
      * @return true if this is a relop; otherwise false
@@ -169,9 +173,9 @@ public class Parser
     public boolean isRelop(String op)
     {
         return op.equals("<")||op.equals(">")||op.equals("<=")||op.equals(">=")||
-                op.equals("<>")||op.equals("=");
+        op.equals("<>")||op.equals("=");
     }
-    
+
     /**
      * Parses the Expression in grammar
      * @return the expression in ast
@@ -189,7 +193,7 @@ public class Parser
         }
         return new Expression(add, exp1, op);
     }
-    
+
     /**
      * Parses the statement
      * @return the statement
@@ -241,14 +245,20 @@ public class Parser
             eat("end");
             return new If(e, p1, p2);
         }
-        return new Failure();
+        throw new RuntimeException();
     }
     
+    public boolean isStatement()
+    {
+        return currentToken.equals("display") || currentToken.equals("assign") || 
+            currentToken.equals("while") || currentToken.equals("if");
+    }
+
     public Program parseProgram()
     {
         Statement s = parseStatement();
         Program p = null;
-        if(sc.hasNext())
+        if(isStatement())
             p = parseProgram();
         return new Program(s, p);
     }

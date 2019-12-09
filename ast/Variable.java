@@ -23,6 +23,11 @@ public class Variable extends Value
         throw new RuntimeException();
     }
     
+    public boolean getBooleanValue()
+    {
+        throw new RuntimeException();
+    }
+    
     public Value eval(Environment env)
     {
         return env.takeVariable(name);

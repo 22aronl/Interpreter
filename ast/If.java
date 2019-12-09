@@ -1,5 +1,6 @@
 package ast;
 
+import environment.*;
 
 /**
  *  
@@ -20,5 +21,17 @@ public class If extends Statement
         expression = e;
         program1 = one;
         program2 = two;
+    }
+    
+    public void run(Environment env)
+    {
+        if(expression.eval(env).getBooleanValue())
+        {
+            program1.run(env);
+            return;
+        }
+        
+        if(program2 != null)
+            program2.run(env);
     }
 }

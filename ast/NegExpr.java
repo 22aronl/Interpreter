@@ -1,6 +1,6 @@
 package ast;
 
-
+import environment.*;
 /**
  * 
  * 
@@ -18,5 +18,15 @@ public class NegExpr
     {
         this.value = value;
         this.op = op;
+    }
+    
+    public Value eval(Environment env)
+    {
+        if(op.equals("-"))
+            if(value instanceof Boolean)
+                return new Boolean(!value.getBooleanValue());
+            else
+                return new Number(-1 * value.getValue());
+        return value.eval(env);
     }
 }

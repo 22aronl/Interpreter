@@ -1,6 +1,7 @@
 package ast;
 
 import environment.*;
+import java.util.*;
 /**
  *  
  * 
@@ -9,20 +10,21 @@ import environment.*;
  */
 public class Program
 {
-    private Statement statement;
-    private Program program;
+    private Statement s;
+    private Program p;
     /**
      * Constructor for objects of class Program
      */
     public Program(Statement s, Program p)
     {
-        statement = s;
-        program  = p;
+        this.s = s;
+        this.p = p;
     }
-    
+
     public void run(Environment env)
     {
-        statement.run(env);
-        program.run(env);
+        s.run(env);
+        if(p!=null)
+            p.run(env);
     }
 }
