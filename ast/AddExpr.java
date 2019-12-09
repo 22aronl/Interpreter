@@ -2,10 +2,10 @@ package ast;
 
 import environment.*;
 /**
- *  
+ *  This is addExpr in which it adds together a MultExpr and a potentiall AddExpr
  * 
  * @author Aaron Lo
- * @version 
+ * @version 12-9-19
  */
 public class AddExpr
 {
@@ -14,6 +14,9 @@ public class AddExpr
     private AddExpr exp2;
     /**
      * Constructor for objects of class AddExpr
+     * @param exp1 the multExpr for language
+     * @param exp2 the addexp
+     * @param op the operator either + or -
      */
     public AddExpr(MultExpr exp1, AddExpr exp2, String op)
     {
@@ -22,6 +25,11 @@ public class AddExpr
         this.op = op;
     }
     
+    /**
+     * Evaluates this addExpr
+     * @param env the environment
+     * @return the value of addExpr
+     */
     public Value eval(Environment env)
     {
         int a = exp1.eval(env).getValue();

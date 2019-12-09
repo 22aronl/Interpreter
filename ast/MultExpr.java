@@ -2,10 +2,10 @@ package ast;
 
 import environment.*;
 /**
- *  
+ *  This the an MultExpr that is combination of negExpr + multExpr
  * 
  * @author Aaron Lo
- * @version 
+ * @version 12-9-19
  */
 public class MultExpr
 {
@@ -14,6 +14,9 @@ public class MultExpr
     private MultExpr exp2;
     /**
      * Constructor for objects of class MultExpr
+     * @param exp1 an Neg Expression
+     * @param exp2 the multiple Exp2
+     * @param op the operator that can either be * or /
      */
     public MultExpr(NegExpr exp1, MultExpr exp2, String op)
     {
@@ -22,6 +25,11 @@ public class MultExpr
         this.op = op;
     }
     
+    /**
+     * This evaluates the mult experssion
+     * @param env the environment
+     * @return the value it equals
+     */
     public Value eval(Environment env)
     {
         int a = exp1.eval(env).getValue();

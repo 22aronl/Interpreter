@@ -3,10 +3,10 @@ package ast;
 import environment.*;
 
 /**
- *  
+ *  An if class, This will run program1 if expression is true, otherwise program2
  * 
  * @author Aaron Lo
- * @version 
+ * @version 12-9-19
  */
 public class If extends Statement
 {
@@ -15,6 +15,10 @@ public class If extends Statement
     private Program program2;
     /**
      * Constructor for objects of class If
+     * @param e the expression to bve evaluated
+     * @param one the programnumber one
+     * @param two the program number two
+     * 
      */
     public If(Expression e, Program one, Program two)
     {
@@ -23,6 +27,10 @@ public class If extends Statement
         program2 = two;
     }
     
+    /**
+     * This runs the if statement
+     * @param env the environment inwhich it runs
+     */
     public void run(Environment env)
     {
         if(expression.eval(env).getBooleanValue())

@@ -2,10 +2,10 @@ package ast;
 
 import environment.*;
 /**
- *  
+ *  A while loop
  * 
  * @author Aaron Lo
- * @version 
+ * @version 12-9-19
  */
 public class While extends Statement
 {
@@ -13,6 +13,8 @@ public class While extends Statement
     private Program program;
     /**
      * Constructor for objects of class While
+     * @param e the xpression (condition)
+     * @param p program to be run
      */
     public While(Expression e, Program p)
     {
@@ -20,6 +22,10 @@ public class While extends Statement
         program = p;
     }
     
+    /**
+     * Runs the while loop
+     * @param env the environment
+     */
     public void run(Environment env)
     {
         while(expression.eval(env).getBooleanValue())

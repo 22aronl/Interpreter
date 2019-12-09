@@ -73,7 +73,7 @@ public class Scanner
      * This iterates the function with the next char and then sets the currentChar to the 
      *  next character in the order
      * @param expected the expected char
-     * @throws ScanErrorException if the expected and currentchar don't match up
+     * @throws IOException if the expected and currentchar don't match up
      */
 
     private void eat(char expected) throws IOException
@@ -155,7 +155,7 @@ public class Scanner
     /**
      * This scans the number
      * @return the number
-     * @throws ScanErrorException this is thrown when there is a scanning error
+     * @throws IOException this is thrown when there is a scanning error
      */
     private String scanNumber() throws IOException
     {
@@ -171,7 +171,7 @@ public class Scanner
     /**
      * This scans the identifier
      * @return the next identifier
-     * @throws ScanErrorException this is thrown when there is a scanning error
+     * @throws IOException this is thrown when there is a scanning error
      */
     private String scanIdentifier() throws IOException
     {
@@ -187,7 +187,7 @@ public class Scanner
     /**
      * This scans the operator
      * @return the next operator
-     * @throws ScanErrorException this is thrown when there is a scanning error
+     * @throws IOException this is thrown when there is a scanning error
      */
     private String scanOperator() throws IOException
     {
@@ -209,7 +209,7 @@ public class Scanner
     /**
      * Iterates through the whiteSpaces
      * @return the nextToken
-     * @throws ScanErrorException this is thrown when there is a scanning error
+     * @throws IOException this is thrown when there is a scanning error
      */
     private String scanWhiteSpaces() throws IOException
     {
@@ -220,7 +220,7 @@ public class Scanner
 
     /**
      * Skips the line
-     * @throws ScanErrorException this is thrown when there is a scanning error
+     * @throws IOException this is thrown when there is a scanning error
      */
     private void scanSingleLine() throws IOException
     {
@@ -237,7 +237,7 @@ public class Scanner
 
     /**
      * Scans multiple lines until it reaches end of line
-     * @throws ScanErrorException  this is thrown when there is a scanning error
+     * @throws IOException  this is thrown when there is a scanning error
      */
     private void scanMultipleLines() throws IOException
     {
@@ -256,7 +256,7 @@ public class Scanner
     /**
      * Scans the comment and or divide
      * @return the string of the next possible thing
-     * @throws ScanErrorException this is thrown when there is a scanning error
+     * @throws IOException this is thrown when there is a scanning error
      */
     private String scanComment() throws IOException
     {
@@ -287,7 +287,7 @@ public class Scanner
     /**
      * Method: nextToken of the file
      * @return the nextToken in String
-     * @throws ScanErrorException this is thrown when there is a scanning error
+     * @throws IOException this is thrown when there is a scanning error
      */
     public String nextToken() throws IOException
     {

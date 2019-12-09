@@ -2,10 +2,10 @@ package ast;
 
 import environment.*;
 /**
- *  
+ *  The expression class which contains either a boolean or integer
  * 
  * @author Aaron Lo
- * @version 
+ * @version 12-9-19
  */
 public class Expression extends Value
 {
@@ -14,6 +14,9 @@ public class Expression extends Value
     private Expression exp2;
     /**
      * Constructor for objects of class Expression
+     * @param exp1 the addExpr
+     * @param exp2 a secondary exp2, may be null
+     * @param relop the way to evalute this expression; (<, >, <=, >=, <>, =)
      */
     public Expression(AddExpr exp1, Expression exp2, String relop)
     {
@@ -22,17 +25,12 @@ public class Expression extends Value
         this.relop = relop;
     }
     
-    public int getValue()
-    {
-        throw new RuntimeException();
-    }
     
-    public boolean getBooleanValue()
-    {
-        throw new RuntimeException();
-    }
-    
-    
+    /**
+     * This evaluates the expression into a Value
+     * @param env the environemnt
+     * @return the value, either boolean or number
+     */
     public Value eval(Environment env)
     {
         Value k = exp1.eval(env);

@@ -168,6 +168,7 @@ public class Parser
 
     /**
      * Checks if this is a relop (<, >, >=, <=, <>, =)
+     * @param op the string to be checked
      * @return true if this is a relop; otherwise false
      */
     public boolean isRelop(String op)
@@ -219,7 +220,7 @@ public class Parser
             String name = currentToken;
             eat(currentToken);
             eat("=");
-            return new Assingment(name, parseExpression());
+            return new Assignment(name, parseExpression());
         }
         else if(currentToken.equals("while"))
         {
@@ -248,12 +249,20 @@ public class Parser
         throw new RuntimeException();
     }
     
+    /**
+     * Checks if this is an statement
+     * @return true if the start is the statement
+     */
     public boolean isStatement()
     {
         return currentToken.equals("display") || currentToken.equals("assign") || 
             currentToken.equals("while") || currentToken.equals("if");
     }
 
+    /**
+     * This parsesthe program
+     * @return a program
+     */
     public Program parseProgram()
     {
         Statement s = parseStatement();

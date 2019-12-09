@@ -11,6 +11,10 @@ import java.io.*;
  */
 public class Tester
 {
+    /**
+     * Main method, runs the tester
+     * @param args no idea
+     */
     public static void main(String[] args) throws IOException
     {
         File[] files = (new File("testFile")).listFiles();
@@ -23,7 +27,8 @@ public class Tester
                 continue;
             if(!specific.equals("NO") && !name.equals(specific))
                 continue;
-            System.out.println("Running test number " + counter + ": "+ name.substring(0, name.indexOf(".") == -1 ? 
+            System.out.println("Running test number " + counter + ": "+ 
+                    name.substring(0, name.indexOf(".") == -1 ? 
                         name.length() : name.indexOf(".")));
             Parser p = new Parser(new Scanner(new FileInputStream("testFile/" + name)));
             Environment env = new Environment();
