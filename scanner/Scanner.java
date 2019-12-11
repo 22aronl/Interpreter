@@ -59,8 +59,6 @@ public class Scanner
             if(i == -1)
                 eof = true;
             currentChar = (char)i;
-            if(currentChar == '.')
-                eof = true;
         }
         catch(Exception e)
         {
@@ -293,7 +291,7 @@ public class Scanner
     {
         if(eof)
         {
-            return ".";
+            return "END OF FILE UNIQUEBYTECODETHATSHOULDNOTBEREPLICATED ERROR3506618469";
         }
 
         if(isDigit(currentChar)) return scanNumber();

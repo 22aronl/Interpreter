@@ -19,7 +19,7 @@ public class Tester
     {
         File[] files = (new File("testFile")).listFiles();
         int counter = 1;
-        String specific = "simpleTest2.txt";
+        String specific = "NO";
         for(int i = 0; i < files.length; i++)
         {
             String name = files[i].getName();

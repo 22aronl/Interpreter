@@ -227,7 +227,7 @@ public class Parser
             eat("while");
             Expression e = parseExpression();
             eat("do");
-            Program p = parseProgram();
+            Program p = parseProgramSpecial();
             eat("end");
             return new While(e, p);
         }
@@ -236,17 +236,17 @@ public class Parser
             eat("if");
             Expression e = parseExpression();
             eat("then");
-            Program p1 = parseProgram();
+            Program p1 = parseProgramSpecial();
             Program p2 = null;
             if(currentToken.equals("else"))
             {
                 eat("else");
-                p2 = parseProgram();
+                p2 = parseProgramSpecial();
             }
             eat("end");
             return new If(e, p1, p2);
         }
-        throw new RuntimeException();
+        throw new RuntimeException(currentToken);
     }
     
     /**
@@ -258,6 +258,15 @@ public class Parser
         return currentToken.equals("display") || currentToken.equals("assign") || 
             currentToken.equals("while") || currentToken.equals("if");
     }
+    
+    public Program parseProgramSpecial()
+    {
+        Statement s = parseStatement();
+        Program p = null;
+        if(isStatement())
+            p = parseProgramSpecial();
+        return new Program(s, p);
+    }
 
     /**
      * This parsesthe program
@@ -267,7 +276,7 @@ public class Parser
     {
         Statement s = parseStatement();
         Program p = null;
-        if(isStatement())
+        if(!currentToken.equals("END OF FILE UNIQUEBYTECODETHATSHOULDNOTBEREPLICATED ERROR3506618469"))
             p = parseProgram();
         return new Program(s, p);
     }
