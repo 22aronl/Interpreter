@@ -25,6 +25,8 @@ public class Tester
             String name = files[i].getName();
             if(name.length() < 2 && !name.substring(0, 2).equals("wq"))
                 continue;
+            if(!name.substring(name.length() - 4, name.length()).equals(".txt"))
+                continue;
             if(!specific.equals("NO") && !name.equals(specific))
                 continue;
             System.out.println("Running test number " + counter + ": "+ 
